@@ -10,7 +10,6 @@ using SpreadsheetLightWrapper.Export.Models;
 using Color = System.Drawing.Color;
 using Column = SpreadsheetLightWrapper.Export.Models.Column;
 
-
 namespace SpreadsheetLightWrapper.Tests
 {
     /// ===========================================================================================
@@ -23,7 +22,7 @@ namespace SpreadsheetLightWrapper.Tests
     {
         /// -----------------------------------------------------------------------------------------------
         /// <summary>
-        /// Test the basic library
+        ///     Test the basic library
         /// </summary>
         /// -----------------------------------------------------------------------------------------------
         [TestMethod]
@@ -34,7 +33,7 @@ namespace SpreadsheetLightWrapper.Tests
                 var savePath = @"C:\\SpreadsheetLightWorkbookSimpleSave.xls";
                 var data = new CreateMockData();
                 var dataSet = data.CreateDataSet();
-                Exporter.OutputWorkbook(null, dataSet, new[] { "Custom Grouped DS" },
+                Exporter.OutputWorkbook(null, dataSet, new[] {"Custom Grouped DS"},
                     CustomExcelExportStyles.SetupCustomStyles(), true, savePath);
             }
             catch (Exception ex)
@@ -214,39 +213,39 @@ namespace SpreadsheetLightWrapper.Tests
                 {
                     new Column
                     (
-                        boundColumnName: "SheetName",
-                        userDefinedColumnName: "Managers",
-                        numberFormat: NumberFormats.General,
-                        horizontalAlignment: HorizontalAlignmentValues.Left,
-                        showField: true,
-                        fieldOrder: 1
+                        "SheetName",
+                        "Managers",
+                        NumberFormats.General,
+                        HorizontalAlignmentValues.Left,
+                        true,
+                        1
                     ),
                     new Column
                     (
-                        boundColumnName: "Age",
-                        userDefinedColumnName: "Age",
-                        numberFormat: NumberFormats.Decimal0,
-                        horizontalAlignment: HorizontalAlignmentValues.Center,
-                        showField: true,
-                        fieldOrder: 2
+                        "Age",
+                        "Age",
+                        NumberFormats.Decimal0,
+                        HorizontalAlignmentValues.Center,
+                        true,
+                        2
                     ),
                     new Column
                     (
-                        boundColumnName: "Income",
-                        userDefinedColumnName: "Compensation",
-                        numberFormat: NumberFormats.Currency0Black,
-                        horizontalAlignment: HorizontalAlignmentValues.Right,
-                        showField: true,
-                        fieldOrder: 3
+                        "Income",
+                        "Compensation",
+                        NumberFormats.Currency0Black,
+                        HorizontalAlignmentValues.Right,
+                        true,
+                        3
                     ),
                     new Column
                     (
-                        boundColumnName: "Registered",
-                        userDefinedColumnName: "Date Registered",
-                        numberFormat: NumberFormats.DateShort1,
-                        horizontalAlignment: HorizontalAlignmentValues.Center,
-                        showField: true,
-                        fieldOrder: 5
+                        "Registered",
+                        "Date Registered",
+                        NumberFormats.DateShort1,
+                        HorizontalAlignmentValues.Center,
+                        true,
+                        5
                     )
                 };
                 /* -------------------------------------------------------------
@@ -255,15 +254,15 @@ namespace SpreadsheetLightWrapper.Tests
                  * -----------------------------------------------------------*/
                 childList.Add(new ChildSetting
                 (
-                    name: "Managers",                           // SheetName
-                    showColumnHeader: true,                     // Show Column Headers
-                    columnOffset: 1,                            // Column Offset to the Right
-                    columnHeaderRowHeight: null,                // Column Header Row Height
-                    columnHeaderStyle: firstColumnHeaderStyle,  // Column Header Style
-                    showAlternatingRows: false,                 // Show Alternating Rows, false will default to Odd
-                    oddRowStyle: oddRowStyle,                   // Odd Row Style
-                    evenRowStyle: null,                         // Even Row Style
-                    userDefinedColumns: columns                 // User-Defined Column (UDCs)
+                    "Managers", // SheetName
+                    true, // Show Column Headers
+                    1, // Column Offset to the Right
+                    null, // Column Header Row Height
+                    firstColumnHeaderStyle, // Column Header Style
+                    false, // Show Alternating Rows, false will default to Odd
+                    oddRowStyle, // Odd Row Style
+                    null, // Even Row Style
+                    columns // User-Defined Column (UDCs)
                 ));
 
                 /* -------------------------------------------------------------
@@ -279,21 +278,22 @@ namespace SpreadsheetLightWrapper.Tests
                  * Using Constructor dependency injection
                  * -----------------------------------------------------------*/
                 childList.Add(new ChildSetting(
-                    "Team Leads",               // SheetName
-                    true,                       // Show Column Headers
-                    2,                          // Column Offset to the Right
-                    null,                       // Column Header Row Height
-                    secondColumnHeaderStyle,    // Column Header Style
-                    false,                      // Show Alternating Rows, false will default to Odd
-                    oddRowStyle,                // Odd Row Style
-                    null,                       // Even Row Style
-                    new List<Column>            // User-Defined Column (UDCs)
+                    "Team Leads", // SheetName
+                    true, // Show Column Headers
+                    2, // Column Offset to the Right
+                    null, // Column Header Row Height
+                    secondColumnHeaderStyle, // Column Header Style
+                    false, // Show Alternating Rows, false will default to Odd
+                    oddRowStyle, // Odd Row Style
+                    null, // Even Row Style
+                    new List<Column> // User-Defined Column (UDCs)
                     {
                         new Column("TLID", "Team Lead ID", NumberFormats.General, HorizontalAlignmentValues.Left, true,
                             6),
                         new Column("Registered", "Registration Date", NumberFormats.UserDefined,
                             HorizontalAlignmentValues.Center, true, 2, "d-mmm-yy"),
-                        new Column("SheetName", "Team Leads", NumberFormats.General, HorizontalAlignmentValues.Left, true, 0),
+                        new Column("SheetName", "Team Leads", NumberFormats.General, HorizontalAlignmentValues.Left,
+                            true, 0),
                         new Column("Age", "How Old?", NumberFormats.General, HorizontalAlignmentValues.Center, true, 1),
                         new Column("Member", "Member?", NumberFormats.General, HorizontalAlignmentValues.Center, true, 3),
                         new Column("Income", "Income", NumberFormats.Accounting2Red, HorizontalAlignmentValues.Right,
@@ -322,7 +322,8 @@ namespace SpreadsheetLightWrapper.Tests
                         new Column("Registered", "Date", NumberFormats.TimeStamp124, HorizontalAlignmentValues.Left,
                             true, 3),
                         new Column("Member", "Member?", NumberFormats.General, HorizontalAlignmentValues.Center, true, 2),
-                        new Column("SheetName", "Associate", NumberFormats.General, HorizontalAlignmentValues.Left, true, 0)
+                        new Column("SheetName", "Associate", NumberFormats.General, HorizontalAlignmentValues.Left, true,
+                            0)
                     }
                 ));
 
@@ -407,7 +408,7 @@ namespace SpreadsheetLightWrapper.Tests
                 table.Columns.Add("Registered", typeof(DateTime));
                 table.Columns.Add("TLID", typeof(int));
 
-                table.PrimaryKey = new[] { table.Columns["AID"] };
+                table.PrimaryKey = new[] {table.Columns["AID"]};
 
                 var newRow = table.NewRow();
                 newRow["AID"] = 1;
@@ -557,7 +558,7 @@ namespace SpreadsheetLightWrapper.Tests
                 table.Columns.Add("Registered", typeof(DateTime));
                 table.Columns.Add("MID", typeof(int));
 
-                table.PrimaryKey = new[] { table.Columns["TLID"] };
+                table.PrimaryKey = new[] {table.Columns["TLID"]};
 
                 var newRow = table.NewRow();
                 newRow["TLID"] = 1;
@@ -647,7 +648,7 @@ namespace SpreadsheetLightWrapper.Tests
                 table.Columns.Add("Registered", typeof(DateTime));
                 table.Columns.Add("DID", typeof(int));
 
-                table.PrimaryKey = new[] { table.Columns["MID"] };
+                table.PrimaryKey = new[] {table.Columns["MID"]};
 
                 var newRow = table.NewRow();
                 newRow["MID"] = 2;
@@ -725,7 +726,7 @@ namespace SpreadsheetLightWrapper.Tests
                 table.Columns.Add("Income", typeof(double));
                 table.Columns.Add("Member", typeof(bool));
                 table.Columns.Add("Registered", typeof(DateTime));
-                table.PrimaryKey = new[] { table.Columns["DID"] };
+                table.PrimaryKey = new[] {table.Columns["DID"]};
 
                 var newRow = table.NewRow();
                 newRow["DID"] = 15;
@@ -789,5 +790,4 @@ namespace SpreadsheetLightWrapper.Tests
             }
         }
     }
-
 }

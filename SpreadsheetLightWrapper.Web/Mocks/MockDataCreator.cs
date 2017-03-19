@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 
 namespace SpreadsheetLightWrapper.Web.Mocks
@@ -35,7 +34,6 @@ namespace SpreadsheetLightWrapper.Web.Mocks
             }
             catch (Exception ex)
             {
-
             }
         }
 
@@ -72,7 +70,6 @@ namespace SpreadsheetLightWrapper.Web.Mocks
             }
             catch (Exception ex)
             {
-
             }
             return null;
         }
@@ -101,7 +98,6 @@ namespace SpreadsheetLightWrapper.Web.Mocks
             }
             catch (Exception ex)
             {
-
             }
             return null;
         }
@@ -125,7 +121,6 @@ namespace SpreadsheetLightWrapper.Web.Mocks
             }
             catch (Exception ex)
             {
-
             }
             return null;
         }
@@ -147,22 +142,21 @@ namespace SpreadsheetLightWrapper.Web.Mocks
                 _dataSet.Tables.Add(_associates.CreateAssociates());
 
                 _dataSet.Relations.Add("FK_TeamLeads_Managers",
-                     _dataSet.Tables["Managers"].Columns["MID"],
-                     _dataSet.Tables["TeamLeads"].Columns["MID"]);
+                    _dataSet.Tables["Managers"].Columns["MID"],
+                    _dataSet.Tables["TeamLeads"].Columns["MID"]);
 
                 return _dataSet;
             }
             catch (Exception ex)
             {
-
             }
             return null;
         }
 
         /// -----------------------------------------------------------------------------------------------
         /// <summary>
-        ///     This example has four tables with three that are related, Directors, Managers & TeamLeads.  
-        ///     The unrelated table Associates will get its own sheet, the three related will be grouped 
+        ///     This example has four tables with three that are related, Directors, Managers & TeamLeads.
+        ///     The unrelated table Associates will get its own sheet, the three related will be grouped
         ///     on one sheet.
         /// </summary>
         /// <returns>DataSet</returns>
@@ -181,14 +175,13 @@ namespace SpreadsheetLightWrapper.Web.Mocks
                     _dataSet.Tables["Managers"].Columns["DID"]);
 
                 _dataSet.Relations.Add("FK_TeamLeads_Managers",
-                     _dataSet.Tables["Managers"].Columns["MID"],
-                     _dataSet.Tables["TeamLeads"].Columns["MID"]);
+                    _dataSet.Tables["Managers"].Columns["MID"],
+                    _dataSet.Tables["TeamLeads"].Columns["MID"]);
 
                 return _dataSet;
             }
             catch (Exception ex)
             {
-
             }
             return null;
         }
@@ -206,7 +199,6 @@ namespace SpreadsheetLightWrapper.Web.Mocks
             }
             catch (Exception ex)
             {
-
             }
         }
     }

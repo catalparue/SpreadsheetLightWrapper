@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Data;
 
 namespace SpreadsheetLightWrapper.Web.Mocks
@@ -151,7 +150,6 @@ namespace SpreadsheetLightWrapper.Web.Mocks
             }
             catch (Exception ex)
             {
-
             }
             return null;
         }

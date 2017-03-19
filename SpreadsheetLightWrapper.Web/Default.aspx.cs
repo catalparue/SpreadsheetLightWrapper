@@ -1,20 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using DocumentFormat.OpenXml.Spreadsheet;
+using log4net;
 using SpreadsheetLightWrapper.Core.style;
 using SpreadsheetLightWrapper.Export;
 using SpreadsheetLightWrapper.Export.Enums;
 using SpreadsheetLightWrapper.Export.Models;
+using SpreadsheetLightWrapper.Web.Mocks;
 using Color = System.Drawing.Color;
 using Column = SpreadsheetLightWrapper.Export.Models.Column;
 using Page = System.Web.UI.Page;
-using SpreadsheetLightWrapper.Export.Models;
-using SpreadsheetLightWrapper.Web.Mocks;
 
 namespace SpreadsheetLightWrapper.Web
 {
-    public partial class Default : System.Web.UI.Page
+    /// ===========================================================================================
+    /// <summary>
+    ///     Default Webpage to Demo the SpreadsheetLightWrapper Utility
+    /// </summary>
+    /// ===========================================================================================
+    public partial class Default : Page
     {
+        /// -----------------------------------------------------------------------------------------------
+        /// <summary>
+        ///     Internal Members
+        /// </summary>
+        /// -----------------------------------------------------------------------------------------------
+        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
         private readonly MockDataCreator _mocks;
 
         /// -----------------------------------------------------------------------------------------------
@@ -25,6 +38,9 @@ namespace SpreadsheetLightWrapper.Web
         public Default()
         {
             _mocks = new MockDataCreator();
+            /* Diagnostic */
+            //Log.Info("Entering Default Constructor.");
+            //ErrorHandlingTester(0);
         }
 
         /// -----------------------------------------------------------------------------------------------
@@ -69,7 +85,8 @@ namespace SpreadsheetLightWrapper.Web
             }
             catch (Exception ex)
             {
-
+                Log.Error("SpreadsheetLightWrapper.Web.Default.btnBasicRelatedGroupedDataSet_Click -> " + ex.Message +
+                          ": " + ex);
             }
         }
 
@@ -91,9 +108,9 @@ namespace SpreadsheetLightWrapper.Web
                 Response.ContentType = "application/excel";
                 Response.AddHeader("Content-disposition", "filename=ExcelExport.xlsx");
                 Exporter.OutputWorkbook(
-                    Response.OutputStream, 
-                    dataSet, 
-                    new []{"Custom Grouped DS"},
+                    Response.OutputStream,
+                    dataSet,
+                    new[] {"Custom Grouped DS"},
                     CustomExcelExportStyles.SetupCustomStyles());
                 Response.OutputStream.Flush();
                 Response.OutputStream.Close();
@@ -102,7 +119,8 @@ namespace SpreadsheetLightWrapper.Web
             }
             catch (Exception ex)
             {
-
+                Log.Error("SpreadsheetLightWrapper.Web.Default.btnStyledRelatedGroupedDataSet_Click -> " + ex.Message +
+                          ": " + ex);
             }
         }
 
@@ -124,16 +142,17 @@ namespace SpreadsheetLightWrapper.Web
                 var savePath = @"C:\\SpreadsheetLightWorkbook.xls";
                 var dataSet = _mocks.CreateRelatedGroupedDataSet();
                 Exporter.OutputWorkbook(
-                    null, 
+                    null,
                     dataSet,
-                    new[]{ "Custom Grouped DS" },
-                    CustomExcelExportStyles.SetupCustomStyles(), 
-                    true, 
+                    new[] {"Custom Grouped DS"},
+                    CustomExcelExportStyles.SetupCustomStyles(),
+                    true,
                     savePath);
             }
             catch (Exception ex)
             {
-
+                Log.Error("SpreadsheetLightWrapper.Web.Default.btnStyledRelatedGroupedDataSetToFile_Click -> " +
+                          ex.Message + ": " + ex);
             }
         }
 
@@ -156,8 +175,8 @@ namespace SpreadsheetLightWrapper.Web
                 Response.ContentType = "application/excel";
                 Response.AddHeader("Content-disposition", "filename=ExcelExport.xlsx");
                 Exporter.OutputWorkbook(
-                    Response.OutputStream, 
-                    dataSet, 
+                    Response.OutputStream,
+                    dataSet,
                     null,
                     CustomExcelExportStyles.SetupCustomStyles());
                 Response.OutputStream.Flush();
@@ -167,7 +186,8 @@ namespace SpreadsheetLightWrapper.Web
             }
             catch (Exception ex)
             {
-
+                Log.Error("SpreadsheetLightWrapper.Web.Default.btnUngroupedNoParentChildData_Click -> " + ex.Message +
+                          ": " + ex);
             }
         }
 
@@ -188,8 +208,8 @@ namespace SpreadsheetLightWrapper.Web
                 Response.ContentType = "application/excel";
                 Response.AddHeader("Content-disposition", "filename=ExcelExport.xlsx");
                 Exporter.OutputWorkbook(
-                    Response.OutputStream, 
-                    dataSet, 
+                    Response.OutputStream,
+                    dataSet,
                     null,
                     CustomExcelExportStyles.SetupCustomStyles());
                 Response.OutputStream.Flush();
@@ -199,7 +219,8 @@ namespace SpreadsheetLightWrapper.Web
             }
             catch (Exception ex)
             {
-
+                Log.Error("SpreadsheetLightWrapper.Web.Default.btnPartiallyRelatedGroupedData_Click -> " + ex.Message +
+                          ": " + ex);
             }
         }
 
@@ -220,9 +241,9 @@ namespace SpreadsheetLightWrapper.Web
                 Response.ContentType = "application/excel";
                 Response.AddHeader("Content-disposition", "filename=ExcelExport.xlsx");
                 Exporter.OutputWorkbook(
-                    Response.OutputStream, 
+                    Response.OutputStream,
                     dataSet,
-                    new[]{"Directors", "Managers-TeamLeads", "Associates" },
+                    new[] {"Directors", "Managers-TeamLeads", "Associates"},
                     CustomExcelExportStyles.SetupCustomStyles());
                 Response.OutputStream.Flush();
                 Response.OutputStream.Close();
@@ -231,7 +252,8 @@ namespace SpreadsheetLightWrapper.Web
             }
             catch (Exception ex)
             {
-
+                Log.Error("SpreadsheetLightWrapper.Web.Default.btnPartiallyRelatedGroupedDataVer2_Click -> " +
+                          ex.Message + ": " + ex);
             }
         }
 
@@ -253,9 +275,9 @@ namespace SpreadsheetLightWrapper.Web
                 Response.ContentType = "application/excel";
                 Response.AddHeader("Content-disposition", "filename=ExcelExport.xlsx");
                 Exporter.OutputWorkbook(
-                    Response.OutputStream, 
+                    Response.OutputStream,
                     dataSet,
-                    new[]{ "Dir-Manag-TLs", "Associates" },
+                    new[] {"Dir-Manag-TLs", "Associates"},
                     CustomExcelExportStyles.SetupCustomStyles());
                 Response.OutputStream.Flush();
                 Response.OutputStream.Close();
@@ -264,18 +286,48 @@ namespace SpreadsheetLightWrapper.Web
             }
             catch (Exception ex)
             {
-
+                Log.Error("SpreadsheetLightWrapper.Web.Default.btnPartiallyRelatedGroupedDataVer3_Click -> " +
+                          ex.Message + ": " + ex);
             }
         }
+
+        #region Diagnostics
+
+        /// -----------------------------------------------------------------------------------------------
+        /// <summary>
+        ///     Automatically generate an error for testing log4net
+        /// </summary>
+        /// <param name="divisor"></param>
+        /// -----------------------------------------------------------------------------------------------
+        private void ErrorHandlingTester(int divisor)
+        {
+            try
+            {
+                var result = 2 / divisor;
+            }
+            catch (Exception ex)
+            {
+                Log.Error("SpreadsheetLightWrapper.Web.Default.ErrorHandlingTester -> " + ex.Message + ": " + ex);
+            }
+        }
+
+        #endregion Diagnostics
     }
 
     /// ===========================================================================================
     /// <summary>
-    ///     User-Defined Styling class for Examples
+    ///     User-Defined Stylings class for Examples
     /// </summary>
     /// ===========================================================================================
     public static class CustomExcelExportStyles
     {
+        /// -----------------------------------------------------------------------------------------------
+        /// <summary>
+        ///     Internal Members
+        /// </summary>
+        /// -----------------------------------------------------------------------------------------------
+        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
         /// -----------------------------------------------------------------------------------------------
         /// <summary>
         ///     This setting creator has user-defined styles and columns for the four data-tables in
@@ -449,40 +501,40 @@ namespace SpreadsheetLightWrapper.Web
                 {
                     new Column
                     (
-                        boundColumnName: "Name",
-                        userDefinedColumnName: "Managers",
-                        numberFormat: NumberFormats.General,
-                        horizontalAlignment: HorizontalAlignmentValues.Left,
-                        showField: true,
-                        fieldOrder: 1
+                        "Name",
+                        "Managers",
+                        NumberFormats.General,
+                        HorizontalAlignmentValues.Left,
+                        true,
+                        1
                     ),
                     new Column
                     (
-                        boundColumnName: "Age",
-                        userDefinedColumnName: "Age",
-                        numberFormat: NumberFormats.UserDefined,
-                        horizontalAlignment: HorizontalAlignmentValues.Center,
-                        showField: true,
-                        fieldOrder: 2,
-                        userDefinedNumberFormat: "_(* #,##0_);_(* (#,##0);_(* \"-\"_);_(@_)"
+                        "Age",
+                        "Age",
+                        NumberFormats.UserDefined,
+                        HorizontalAlignmentValues.Center,
+                        true,
+                        2,
+                        "_(* #,##0_);_(* (#,##0);_(* \"-\"_);_(@_)"
                     ),
                     new Column
                     (
-                        boundColumnName: "Income",
-                        userDefinedColumnName: "Compensation",
-                        numberFormat: NumberFormats.Currency0Black,
-                        horizontalAlignment: HorizontalAlignmentValues.Right,
-                        showField: true,
-                        fieldOrder: 3
+                        "Income",
+                        "Compensation",
+                        NumberFormats.Currency0Black,
+                        HorizontalAlignmentValues.Right,
+                        true,
+                        3
                     ),
                     new Column
                     (
-                        boundColumnName: "Registered",
-                        userDefinedColumnName: "Date Registered",
-                        numberFormat: NumberFormats.DateShort1,
-                        horizontalAlignment: HorizontalAlignmentValues.Center,
-                        showField: true,
-                        fieldOrder: 5
+                        "Registered",
+                        "Date Registered",
+                        NumberFormats.DateShort1,
+                        HorizontalAlignmentValues.Center,
+                        true,
+                        5
                     )
                 };
                 /* -------------------------------------------------------------
@@ -573,14 +625,12 @@ namespace SpreadsheetLightWrapper.Web
                     ChildSettings = childList
                 };
                 return settings;
-                //return new Settings("Organization", childList);
             }
             catch (Exception ex)
             {
-
+                Log.Error("SpreadsheetLightWrapper.Web.CustomExcelExportStyles -> " + ex.Message + ": " + ex);
             }
             return null;
         }
     }
-
 }

@@ -2,6 +2,8 @@
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using log4net;
 using SpreadsheetLightWrapper.Core;
 using SpreadsheetLightWrapper.Core.style;
 using SpreadsheetLightWrapper.Export.Enums;
@@ -23,6 +25,8 @@ namespace SpreadsheetLightWrapper.Export
         ///     Internal Members
         /// </summary>
         /// -----------------------------------------------------------------------------------------------
+        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
         private static Settings _settings;
 
         private static int _tableCounter;
@@ -44,6 +48,28 @@ namespace SpreadsheetLightWrapper.Export
 
         #endregion Properties
 
+        #region Diagnostics
+
+        /// -----------------------------------------------------------------------------------------------
+        /// <summary>
+        ///     Automatically generate an error for testing log4net
+        /// </summary>
+        /// <param name="divisor"></param>
+        /// -----------------------------------------------------------------------------------------------
+        private void ErrorHandlingTester(int divisor)
+        {
+            try
+            {
+                var result = 2 / divisor;
+            }
+            catch (Exception ex)
+            {
+                Log.Error("SpreadsheetLightWrapper.Export.Exporter.ErrorHandlingTester -> " + ex.Message + ": " + ex);
+            }
+        }
+
+        #endregion Diagnostics
+
         #region Constructors
 
         /// -----------------------------------------------------------------------------------------------
@@ -55,15 +81,14 @@ namespace SpreadsheetLightWrapper.Export
         {
             try
             {
+                /* Diagnostic */
+                Log.Info("Entering Default Constructor.");
                 _settings = DefaultStyles.SetupDefaultStyles();
                 _document = new SLDocument();
             }
             catch (Exception ex)
             {
-                //WebLogger.LogException(
-                //    new Exception(
-                //        "SpreadsheetLightWrapper.Exporter.Constructor: Overload 1 -> " + ex.Message, ex),
-                //    new Dictionary<string, string> {{"Exporter", "Constructor: Overload 1"}});
+                Log.Error("SpreadsheetLightWrapper.Export.Exporter.Constructor: Overload 1 -> " + ex.Message + ": " + ex);
             }
         }
 
@@ -77,6 +102,10 @@ namespace SpreadsheetLightWrapper.Export
         {
             try
             {
+                /* Diagnostic */
+                //Log.Info("Entering Exporter Constructor - Overload 2.");
+                //ErrorHandlingTester(0);
+
                 _document = new SLDocument();
 
                 /*  ------------------------------------------------------------
@@ -88,10 +117,7 @@ namespace SpreadsheetLightWrapper.Export
             }
             catch (Exception ex)
             {
-                //WebLogger.LogException(
-                //    new Exception(
-                //        "SpreadsheetLightWrapper.Exporter.Constructor: Overload 2 -> " + ex.Message, ex),
-                //    new Dictionary<string, string> {{"Exporter", "Constructor: Overload 2"}});
+                Log.Error("SpreadsheetLightWrapper.Export.Exporter.Constructor: Overload 2 -> " + ex.Message + ": " + ex);
             }
         }
 
@@ -136,10 +162,8 @@ namespace SpreadsheetLightWrapper.Export
             }
             catch (Exception ex)
             {
-                //WebLogger.LogException(
-                //    new Exception(
-                //        "SpreadsheetLightWrapper.Exporter.OutputWorkbook:Overload 1 -> " + ex.Message, ex),
-                //    new Dictionary<string, string> {{"Exporter", "OutputWorkbook:Overload 1"}});
+                Log.Error("SpreadsheetLightWrapper.Export.Exporter.OutputWorkbook:Overload 1 -> " + ex.Message + ": " +
+                          ex);
             }
         }
 
@@ -178,10 +202,8 @@ namespace SpreadsheetLightWrapper.Export
             }
             catch (Exception ex)
             {
-                //WebLogger.LogException(
-                //    new Exception(
-                //        "SpreadsheetLightWrapper.Exporter.OutputWorkbook:Overload 2 -> " + ex.Message, ex),
-                //    new Dictionary<string, string> {{"Exporter", "OutputWorkbook:Overload 2 "}});
+                Log.Error("SpreadsheetLightWrapper.Export.Exporter.OutputWorkbook:Overload 2 -> " + ex.Message + ": " +
+                          ex);
             }
         }
 
@@ -307,10 +329,7 @@ namespace SpreadsheetLightWrapper.Export
             }
             catch (Exception ex)
             {
-                //WebLogger.LogException(
-                //    new Exception(
-                //        "SpreadsheetLightWrapper.Exporter.GenerateWorkbook -> " + ex.Message, ex),
-                //    new Dictionary<string, string> {{"Exporter", "GenerateWorkbook"}});
+                Log.Error("SpreadsheetLightWrapper.Export.Exporter.GenerateWorkbook -> " + ex.Message + ": " + ex);
             }
             return null;
         }
@@ -430,7 +449,7 @@ namespace SpreadsheetLightWrapper.Export
             }
             catch (Exception ex)
             {
-
+                Log.Error("SpreadsheetLightWrapper.Export.Exporter.GetSubsequentSheets -> " + ex.Message + ": " + ex);
             }
         }
 
@@ -536,6 +555,7 @@ namespace SpreadsheetLightWrapper.Export
             }
             catch (Exception ex)
             {
+                Log.Error("SpreadsheetLightWrapper.Export.Exporter.GetChildren -> " + ex.Message + ": " + ex);
             }
         }
 
@@ -559,28 +579,36 @@ namespace SpreadsheetLightWrapper.Export
         private string GetSheetName(int sheetCounter, string[] sheetNames = null, string childSheetName = null,
             string tableSheetName = null)
         {
-            // List of invalid characters for Sheet Name
-            var badSheetNameChar = new[] {'<', '>', '*', '?', '"', '|', ':', '/', '[', ']'};
-            string workingSheetName;
-            // Any user-defined sheet names
-            if (sheetNames != null)
+            var workingSheetName = string.Empty;
+            try
             {
-                // Get the user defined sheet name
-                workingSheetName = sheetNames[sheetCounter];
-                // Has the name got any invalid characters for a Sheet Name
-                if (!BadCharacters(workingSheetName, badSheetNameChar))
-                    return "Bad Character in Name"; // return feedback for the developer
-            }
-            else
-            {
-                // Otherwise get the default names
-                if (!string.IsNullOrEmpty(childSheetName))
-                    // Check for a child SheetName then capture it.
-                    workingSheetName = childSheetName;
+                // List of invalid characters for Sheet Name
+                var badSheetNameChar = new[] {'<', '>', '*', '?', '"', '|', ':', '/', '[', ']'};
+                // Any user-defined sheet names
+                if (sheetNames != null)
+                {
+                    // Get the user defined sheet name
+                    workingSheetName = sheetNames[sheetCounter];
+                    // Has the name got any invalid characters for a Sheet Name
+                    if (!BadCharacters(workingSheetName, badSheetNameChar))
+                        return "Bad Character in Name"; // return feedback for the developer
+                }
                 else
-                    workingSheetName = !string.IsNullOrEmpty(tableSheetName)
-                        ? tableSheetName
-                        : "output" + sheetCounter;
+                {
+                    // Otherwise get the default names
+                    if (!string.IsNullOrEmpty(childSheetName))
+                        // Check for a child SheetName then capture it.
+                        workingSheetName = childSheetName;
+                    else
+                        workingSheetName = !string.IsNullOrEmpty(tableSheetName)
+                            ? tableSheetName
+                            : "output" + sheetCounter;
+                }
+                return workingSheetName;
+            }
+            catch (Exception ex)
+            {
+                Log.Error("SpreadsheetLightWrapper.Export.Exporter.GetSheetName -> " + ex.Message + ": " + ex);
             }
             return workingSheetName;
         }
@@ -595,10 +623,18 @@ namespace SpreadsheetLightWrapper.Export
         /// -----------------------------------------------------------------------------------------------
         private bool BadCharacters(string name, char[] invalidCharacters)
         {
-            foreach (var item in invalidCharacters)
-                if (name.Contains(item))
-                   return false;
-            return true;
+            try
+            {
+                foreach (var item in invalidCharacters)
+                    if (name.Contains(item))
+                        return false;
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Log.Error("SpreadsheetLightWrapper.Export.Exporter.BadCharacters -> " + ex.Message + ": " + ex);
+            }
+            return false;
         }
 
         /// -----------------------------------------------------------------------------------------------
@@ -622,37 +658,44 @@ namespace SpreadsheetLightWrapper.Export
             DataColumnCollection columns,
             ChildSetting childSetting)
         {
-            if (showColumnHeaders)
+            try
             {
-                // Initialize column counter to starting column index;
-                var colCounter = offsetColumnIndex;
-                // If there aren't any then pass the bound column headers through
-                if (!sortedUdc.Any())
-                    foreach (DataColumn col in columns)
-                    {
-                        // Add the default column name from Data-table
-                        _document.SetCellValue(rowCounter, colCounter, col.ColumnName);
-                        _document.SetCellStyle(rowCounter, colCounter, childSetting.ColumnHeaderStyle);
-                        ++colCounter;
-                    }
-                else
-                    foreach (var sudc in sortedUdc)
-                    foreach (DataColumn col in columns)
-                        if (sudc.BoundColumnName == col.ColumnName)
-                            if (sudc.ShowField)
-                            {
-                                // Add the UDC (User Defined Column) name
-                                _document.SetCellValue(rowCounter, colCounter, sudc.UserDefinedColumnName);
-                                _document.SetCellStyle(rowCounter, colCounter, childSetting.ColumnHeaderStyle);
-                                ++colCounter;
-                            }
-                // Set grouping level for this child's headers
-                _document.AddGroupedRow(rowCounter, outlineLevel);
-                // Set column header height
-                if (childSetting.ColumnHeaderRowHeight != null)
-                    _document.SetRowHeight(rowCounter, (double) childSetting.ColumnHeaderRowHeight);
-                // Since column headers were added then increment the rowCounter before it's returned by reference
-                ++rowCounter;
+                if (showColumnHeaders)
+                {
+                    // Initialize column counter to starting column index;
+                    var colCounter = offsetColumnIndex;
+                    // If there aren't any then pass the bound column headers through
+                    if (!sortedUdc.Any())
+                        foreach (DataColumn col in columns)
+                        {
+                            // Add the default column name from Data-table
+                            _document.SetCellValue(rowCounter, colCounter, col.ColumnName);
+                            _document.SetCellStyle(rowCounter, colCounter, childSetting.ColumnHeaderStyle);
+                            ++colCounter;
+                        }
+                    else
+                        foreach (var sudc in sortedUdc)
+                        foreach (DataColumn col in columns)
+                            if (sudc.BoundColumnName == col.ColumnName)
+                                if (sudc.ShowField)
+                                {
+                                    // Add the UDC (User Defined Column) name
+                                    _document.SetCellValue(rowCounter, colCounter, sudc.UserDefinedColumnName);
+                                    _document.SetCellStyle(rowCounter, colCounter, childSetting.ColumnHeaderStyle);
+                                    ++colCounter;
+                                }
+                    // Set grouping level for this child's headers
+                    _document.AddGroupedRow(rowCounter, outlineLevel);
+                    // Set column header height
+                    if (childSetting.ColumnHeaderRowHeight != null)
+                        _document.SetRowHeight(rowCounter, (double) childSetting.ColumnHeaderRowHeight);
+                    // Since column headers were added then increment the rowCounter before it's returned by reference
+                    ++rowCounter;
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error("SpreadsheetLightWrapper.Export.Exporter.SetupColumnHeaders -> " + ex.Message + ": " + ex);
             }
         }
 
@@ -737,10 +780,7 @@ namespace SpreadsheetLightWrapper.Export
             }
             catch (Exception ex)
             {
-                //WebLogger.LogException(
-                //    new Exception(
-                //        "SpreadsheetLightWrapper.Exporter.SetupRowsAndCells -> " + ex.Message, ex),
-                //    new Dictionary<string, string> {{"Exporter", "SetupRowsAndCells"}});
+                Log.Error("SpreadsheetLightWrapper.Export.Exporter.SetupRowsAndCells -> " + ex.Message + ": " + ex);
             }
         }
 
@@ -762,10 +802,7 @@ namespace SpreadsheetLightWrapper.Export
             }
             catch (Exception ex)
             {
-                //WebLogger.LogException(
-                //    new Exception(
-                //        "SpreadsheetLightWrapper.Exporter.SetNumberFormat -> " + ex.Message, ex),
-                //    new Dictionary<string, string> {{"Exporter", "SetNumberFormat"}});
+                Log.Error("SpreadsheetLightWrapper.Export.Exporter.SetNumberFormat -> " + ex.Message + ": " + ex);
             }
         }
 
@@ -787,10 +824,7 @@ namespace SpreadsheetLightWrapper.Export
             }
             catch (Exception ex)
             {
-                //WebLogger.LogException(
-                //    new Exception(
-                //        "SpreadsheetLightWrapper.Exporter.GetAttribute -> " + ex.Message, ex),
-                //    new Dictionary<string, string> {{"Exporter", "GetAttribute"}});
+                Log.Error("SpreadsheetLightWrapper.Export.Exporter.GetAttribute -> " + ex.Message + ": " + ex);
             }
             return null;
         }
@@ -854,10 +888,7 @@ namespace SpreadsheetLightWrapper.Export
             }
             catch (Exception ex)
             {
-                //WebLogger.LogException(
-                //    new Exception(
-                //        "SpreadsheetLightWrapper.Exporter.SetDataType -> " + ex.Message, ex),
-                //    new Dictionary<string, string> {{"Exporter", "SetDataType"}});
+                Log.Error("SpreadsheetLightWrapper.Export.Exporter.SetDataType -> " + ex.Message + ": " + ex);
             }
         }
 

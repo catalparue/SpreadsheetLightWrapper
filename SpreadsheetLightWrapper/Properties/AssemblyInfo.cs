@@ -1,5 +1,7 @@
 ﻿using System.Reflection;
 using System.Runtime.InteropServices;
+//[assembly: log4net.Config.XmlConfigurator(Watch = true)]
+[assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config", Watch = true)]
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
@@ -8,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("SpreadsheetLight Wrapper")]
 [assembly:
     AssemblyDescription(
-        "Utility intended to easily aid developers setting up routines that will export data to Excel without the need of an installation of Microsoft Office.  The core library is the source code of Vincent Tan Wai Lip's SpreadsheetLight Version 3.4 (27 July 2013) http://spreadsheetlight.com/"
+        "Utility intended to easily aid developers setting up routines that will export data to Excel without the need of Microsoft Office.  The core library is the source code of Vincent Tan Wai Lip's SpreadsheetLight Version 3.4 (27 July 2013) http://spreadsheetlight.com/"
     )]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Donalson Software Solutions")]

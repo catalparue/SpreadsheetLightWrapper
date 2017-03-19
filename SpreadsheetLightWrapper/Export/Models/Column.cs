@@ -1,5 +1,7 @@
 using System;
+using System.Reflection;
 using DocumentFormat.OpenXml.Spreadsheet;
+using log4net;
 using SpreadsheetLightWrapper.Export.Enums;
 
 namespace SpreadsheetLightWrapper.Export.Models
@@ -12,6 +14,13 @@ namespace SpreadsheetLightWrapper.Export.Models
     /// ===========================================================================================
     public class Column
     {
+        /// -----------------------------------------------------------------------------------------------
+        /// <summary>
+        ///     Internal Members
+        /// </summary>
+        /// -----------------------------------------------------------------------------------------------
+        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
         #region Properties
 
         /// -----------------------------------------------------------------------------------------------
@@ -198,11 +207,8 @@ namespace SpreadsheetLightWrapper.Export.Models
             }
             catch (Exception ex)
             {
-                //WebLogger.LogException(
-                //    new Exception(
-                //        "SpreadsheetLightWrapper.Export.Models.Column.Contructor:Overload 2 -> " +
-                //        ex.Message, ex),
-                //    new Dictionary<string, string> { { "Column", "Constructor:Overload 2" } });
+                Log.Error("SpreadsheetLightWrapper.Export.Models.Column.Contructor:Overload 2 -> " + ex.Message + ": " +
+                          ex);
             }
         }
 

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using DocumentFormat.OpenXml.Spreadsheet;
+using log4net;
 using SpreadsheetLightWrapper.Core.style;
 using SpreadsheetLightWrapper.Export.Enums;
 
@@ -16,9 +18,10 @@ namespace SpreadsheetLightWrapper.Export.Models
     {
         /// -----------------------------------------------------------------------------------------------
         /// <summary>
-        ///     Properties
+        ///     Internal Members
         /// </summary>
         /// -----------------------------------------------------------------------------------------------
+        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         #region Properties
 
@@ -28,6 +31,7 @@ namespace SpreadsheetLightWrapper.Export.Models
         /// </summary>
         /// -----------------------------------------------------------------------------------------------
         public string SheetName { get; set; }
+
         public bool ShowColumnHeader { get; set; }
         public bool ShowAlternatingRows { get; set; }
         public int ColumnOffset { get; set; }
@@ -62,11 +66,8 @@ namespace SpreadsheetLightWrapper.Export.Models
             }
             catch (Exception ex)
             {
-                //WebLogger.LogException(
-                //    new Exception(
-                //        "SpreadsheetLightWrapper.Export.Models.ChildSetting.Contructor:Overload 1 -> " +
-                //        ex.Message, ex),
-                    //new Dictionary<string, string> {{"ChildSetting", "Constructor:Overload 1"}});
+                Log.Error("SpreadsheetLightWrapper.Export.Models.ChildSetting.Contructor:Overload 1 -> " + ex.Message +
+                          ": " + ex);
             }
         }
 
@@ -96,11 +97,8 @@ namespace SpreadsheetLightWrapper.Export.Models
             }
             catch (Exception ex)
             {
-                //WebLogger.LogException(
-                //    new Exception(
-                //        "SpreadsheetLightWrapper.Export.Models.ChildSetting.Contructor:Overload 2 -> " +
-                //        ex.Message, ex),
-                //    new Dictionary<string, string> {{"ChildSetting", "Constructor:Overload 2"}});
+                Log.Error("SpreadsheetLightWrapper.Export.Models.ChildSetting.Contructor:Overload 2 -> " + ex.Message +
+                          ": " + ex);
             }
         }
 
@@ -136,11 +134,8 @@ namespace SpreadsheetLightWrapper.Export.Models
             }
             catch (Exception ex)
             {
-                //WebLogger.LogException(
-                //    new Exception(
-                //        "SpreadsheetLightWrapper.Export.Models.ChildSetting.Contructor:Overload 3 -> " +
-                //        ex.Message, ex),
-                //    new Dictionary<string, string> {{"ChildSetting", "Constructor:Overload 3"}});
+                Log.Error("SpreadsheetLightWrapper.Export.Models.ChildSetting.Contructor:Overload 3 -> " + ex.Message +
+                          ": " + ex);
             }
         }
 
@@ -184,50 +179,14 @@ namespace SpreadsheetLightWrapper.Export.Models
             }
             catch (Exception ex)
             {
-                //WebLogger.LogException(
-                //    new Exception(
-                //        "SpreadsheetLightWrapper.Export.Models.ChildSetting.Contructor:Overload 4 -> " +
-                //        ex.Message, ex),
-                //    new Dictionary<string, string> {{"ChildSetting", "Constructor:Overload 4"}});
+                Log.Error("SpreadsheetLightWrapper.Export.Models.ChildSetting.Contructor:Overload 4 -> " + ex.Message +
+                          ": " + ex);
             }
         }
 
         #endregion Constructors
 
         #region User-Defined Column Functions
-
-        /// -----------------------------------------------------------------------------------------------
-        /// <summary>
-        ///     * Deprecated *
-        ///     Alternative to creating a list of Column classes but with less functionality.
-        ///     Overrides the default bound column names with custom ones and determines the formatting,
-        ///     visibility and order.
-        ///     <para />
-        ///     "boundColumnName" string: Bound column name
-        ///     <para />
-        ///     "userDefinedColumnName" string: Custom column name
-        ///     <para />
-        ///     "numberFormat" string: Column format
-        ///     <para />
-        ///     "horizontalAlignment" string: Column horizontalAlignment
-        ///     <para />
-        ///     "showField" bool: Show/Hide column
-        ///     <para />
-        ///     "fieldOrder" int: * Optional - Set the order of the field
-        ///     * Can be left out if showField is false
-        ///     <para />
-        ///     "userDefinedNumberFormat" string: * Optional - User-defined excel format
-        ///     * Must be populated when "numberFormat" is set to "User-Defined"
-        ///     <para />
-        ///     ** Note: If none are added then the column names from the dataset table will be used and
-        ///     there will no formatting.
-        /// </summary>
-        /// <param name="columnsDictionary">Dictionary(string, string): Dictionary of columns</param>
-        /// -----------------------------------------------------------------------------------------------
-        public void SetUserDefinedColumnNames(List<Column> columnsDictionary)
-        {
-            UserDefinedColumns = columnsDictionary;
-        }
 
         /// -----------------------------------------------------------------------------------------------
         /// <summary>
@@ -272,6 +231,7 @@ namespace SpreadsheetLightWrapper.Export.Models
                         });
                     }
                     else
+                    {
                         UserDefinedColumns.Add(new Column
                         {
                             BoundColumnName = row.Key,
@@ -279,16 +239,15 @@ namespace SpreadsheetLightWrapper.Export.Models
                             ShowField = true,
                             FieldOrder = i
                         });
+                    }
                     i++;
                 }
             }
             catch (Exception ex)
             {
-                //WebLogger.LogException(
-                //    new Exception(
-                //        "SpreadsheetLightWrapper.Export.Models.ChildSetting.SetUserDefinedColumnNames -> " +
-                //        ex.Message, ex),
-                //    new Dictionary<string, string> {{"ChildSetting", "SetUserDefinedColumnNames"}});
+                Log.Error(
+                    "SpreadsheetLightWrapper.Export.Models.ChildSetting.SetUserDefinedColumnNames:Overload 1 -> " +
+                    ex.Message + ": " + ex);
             }
         }
 
@@ -348,6 +307,7 @@ namespace SpreadsheetLightWrapper.Export.Models
                     });
                 }
                 else
+                {
                     UserDefinedColumns.Add(new Column
                     {
                         BoundColumnName = boundColumnName,
@@ -358,10 +318,13 @@ namespace SpreadsheetLightWrapper.Export.Models
                         FieldOrder = fieldOrder,
                         UserDefinedNumberFormat = userDefinedNumberFormat
                     });
+                }
             }
             catch (Exception ex)
             {
-
+                Log.Error(
+                    "SpreadsheetLightWrapper.Export.Models.ChildSetting.SetUserDefinedColumnNames:Overload 2 -> " +
+                    ex.Message + ": " + ex);
             }
         }
 

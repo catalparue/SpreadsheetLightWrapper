@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
+using log4net;
 
 namespace SpreadsheetLightWrapper.Export.Models
 {
@@ -11,6 +13,13 @@ namespace SpreadsheetLightWrapper.Export.Models
     /// ===========================================================================================
     public class Settings
     {
+        /// -----------------------------------------------------------------------------------------------
+        /// <summary>
+        ///     Internal Members
+        /// </summary>
+        /// -----------------------------------------------------------------------------------------------
+        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
         #region Properties
 
         /// -----------------------------------------------------------------------------------------------
@@ -40,11 +49,8 @@ namespace SpreadsheetLightWrapper.Export.Models
             }
             catch (Exception ex)
             {
-                //WebLogger.LogException(
-                //    new Exception(
-                //        "SpreadsheetLightWrapper.Export.Models.Settings.Contructor:Overload 1 -> " +
-                //        ex.Message, ex),
-                //    new Dictionary<string, string> {{"Settings", "Constructor:Overload 1"}});
+                Log.Error("SpreadsheetLightWrapper.Export.Models.Settings.Contructor:Overload 1 -> " + ex.Message + ": " +
+                          ex);
             }
         }
 
@@ -64,11 +70,8 @@ namespace SpreadsheetLightWrapper.Export.Models
             }
             catch (Exception ex)
             {
-                //WebLogger.LogException(
-                //    new Exception(
-                //        "SpreadsheetLightWrapper.Export.Models.Settings.Contructor:Overload 2 -> " +
-                //        ex.Message, ex),
-                //    new Dictionary<string, string> {{"Settings", "Constructor:Overload 2"}});
+                Log.Error("SpreadsheetLightWrapper.Export.Models.Settings.Contructor:Overload 2 -> " + ex.Message + ": " +
+                          ex);
             }
         }
 

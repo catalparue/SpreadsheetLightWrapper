@@ -41,10 +41,13 @@
       <HintPath>..\packages\DocumentFormat.OpenXml.2.5\lib\DocumentFormat.OpenXml.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -289,6 +292,7 @@
     <None Include="Docs\Using the Excel Export Helper.docx" />
     <None Include="Docs\Using the Excel Export Helper.mht" />
     <None Include="Docs\Using the Excel Export Helper.pdf" />
+    <Content Include="log4net.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -296,7 +300,6 @@
     <Content Include="Lic\readme.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Error\" />
     <Folder Include="Export\Deprecated\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

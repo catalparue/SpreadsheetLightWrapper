@@ -1,13 +1,22 @@
 ﻿using System;
+using System.Reflection;
 using DocumentFormat.OpenXml.Spreadsheet;
+using log4net;
 using SpreadsheetLightWrapper.Core.style;
 using SpreadsheetLightWrapper.Export.Models;
 using Color = System.Drawing.Color;
 
 namespace SpreadsheetLightWrapper.Export
 {
+    /// ===========================================================================================
+    /// <summary>
+    ///     This default styles library that is used when no other Settings are defined
+    /// </summary>
+    /// ===========================================================================================
     public class DefaultStyles
     {
+        private static readonly ILog Log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
         /// -----------------------------------------------------------------------------------------------
         /// <summary>
         ///     Sets up the default styling when user does not predefine styles with a Settings configuration
@@ -68,24 +77,24 @@ namespace SpreadsheetLightWrapper.Export
                 settings.ChildSettings.Add(new ChildSetting
                 (
                     // SheetName (Optional)
-                    name: "Default Base Child Settings",
+                    "Default Base Child Settings",
                     // Set Overall Column Visibility 
-                    showColumnHeader: true,
+                    true,
                     // Column offset to the right
-                    columnOffset: 0,
+                    0,
                     // Make the base column header row a little larger
                     // so it will stand out.  Value is in pixels
-                    columnHeaderRowHeight: 25,
+                    25,
                     // Setup the style for Column Headers
-                    columnHeaderStyle: baseColumnHeaderStyle,
+                    baseColumnHeaderStyle,
                     // Row and Alternating Row Styles 
                     // If set to false then the odd row style will be overall row style
-                    showAlternatingRows: true,
+                    true,
                     // Setup the style for odd & even rows
-                    oddRowStyle: oddRowStyle,
-                    evenRowStyle: evenRowStyle,
+                    oddRowStyle,
+                    evenRowStyle,
                     // No User-Defined column headers
-                    userDefinedColumns: null
+                    null
                 ));
 
                 /*  ------------------------------------------------------------
@@ -225,10 +234,7 @@ namespace SpreadsheetLightWrapper.Export
             }
             catch (Exception ex)
             {
-                //WebLogger.LogException(
-                //    new Exception(
-                //        "SpreadsheetLightWrapper.Export.DefaultStyles.SetupDefaultStyles -> " + ex.Message, ex),
-                //    new Dictionary<string, string> { { "DefaultStyles", "SetupDefaultStyles" } });
+                Log.Error("SpreadsheetLightWrapper.Export.DefaultStyles.SetupDefaultStyles -> " + ex.Message + ": " + ex);
             }
             return null;
         }

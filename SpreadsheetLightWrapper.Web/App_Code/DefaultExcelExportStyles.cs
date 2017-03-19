@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using DocumentFormat.OpenXml.Spreadsheet;
 using SpreadsheetLightWrapper.Core.style;
 using SpreadsheetLightWrapper.Export.Models;
-//using SpreadsheetLightWrapper.Properties;
 using Color = System.Drawing.Color;
-using Settings = SpreadsheetLightWrapper.Export.Models.Settings;
 
 namespace SpreadsheetLightWrapper.Web
 {
@@ -79,24 +76,24 @@ namespace SpreadsheetLightWrapper.Web
                 settings.ChildSettings.Add(new ChildSetting
                 (
                     // Name (Optional)
-                    name: "Default Base Child Settings",
+                    "Default Base Child Settings",
                     // Set Overall Column Visibility
-                    showColumnHeader: true,
+                    true,
                     // Column offset to the right
-                    columnOffset: 0,
+                    0,
                     // Make the base column header row a little larger
                     // so it will stand out.  Value is in pixels
-                    columnHeaderRowHeight: 25,
+                    25,
                     // Setup the style for Column Headers
-                    columnHeaderStyle: baseColumnHeaderStyle,
+                    baseColumnHeaderStyle,
                     // Row and Alternating Row Styles
                     // If set to false then the odd row style will be overall row style
-                    showAlternatingRows: true,
+                    true,
                     // Setup the style for odd & even rows
-                    oddRowStyle: oddRowStyle,
-                    evenRowStyle: evenRowStyle,
+                    oddRowStyle,
+                    evenRowStyle,
                     // No User-Defined column headers
-                    userDefinedColumns: null
+                    null
                 ));
 
                 /*  ------------------------------------------------------------
@@ -230,12 +227,11 @@ namespace SpreadsheetLightWrapper.Web
                     evenRowStyle,
                     null
                 ));
-                
+
                 return settings;
             }
             catch (Exception ex)
             {
-
             }
             return null;
         }
