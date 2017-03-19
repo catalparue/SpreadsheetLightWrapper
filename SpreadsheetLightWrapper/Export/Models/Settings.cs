@@ -42,7 +42,7 @@ namespace SpreadsheetLightWrapper.Export.Models
             {
                 //WebLogger.LogException(
                 //    new Exception(
-                //        "Ups.Toolkit.SpreadsheetLight.Export.Models.Settings.Contructor:Overload 1 -> " +
+                //        "SpreadsheetLightWrapper.Export.Models.Settings.Contructor:Overload 1 -> " +
                 //        ex.Message, ex),
                 //    new Dictionary<string, string> {{"Settings", "Constructor:Overload 1"}});
             }
@@ -66,7 +66,7 @@ namespace SpreadsheetLightWrapper.Export.Models
             {
                 //WebLogger.LogException(
                 //    new Exception(
-                //        "Ups.Toolkit.SpreadsheetLight.Export.Models.Settings.Contructor:Overload 2 -> " +
+                //        "SpreadsheetLightWrapper.Export.Models.Settings.Contructor:Overload 2 -> " +
                 //        ex.Message, ex),
                 //    new Dictionary<string, string> {{"Settings", "Constructor:Overload 2"}});
             }

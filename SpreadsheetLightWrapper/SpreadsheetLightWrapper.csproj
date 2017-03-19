@@ -287,13 +287,10 @@
     <None Include="Docs\SpreadsheetLight.chm" />
     <None Include="Docs\SpreadsheetLight.chw" />
     <None Include="Docs\Using the Excel Export Helper.docx" />
-    <None Include="Docs\Using the Excel Export Helper.mht" />
-    <None Include="Docs\Using the Excel Export Helper.pdf" />
     <None Include="Docs\Using the Excel Export Helper_files\themedata.thmx" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Docs\Using the Excel Export Helper.htm" />
     <Content Include="Docs\Using the Excel Export Helper_files\colorschememapping.xml" />
     <Content Include="Docs\Using the Excel Export Helper_files\filelist.xml" />
     <Content Include="Docs\Using the Excel Export Helper_files\header.htm" />

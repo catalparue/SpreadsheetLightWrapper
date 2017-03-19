@@ -227,7 +227,7 @@ namespace SpreadsheetLightWrapper.Export
             {
                 //WebLogger.LogException(
                 //    new Exception(
-                //        "Ups.Toolkit.SpreadsheetLight.Export.DefaultStyles.SetupDefaultStyles -> " + ex.Message, ex),
+                //        "SpreadsheetLightWrapper.Export.DefaultStyles.SetupDefaultStyles -> " + ex.Message, ex),
                 //    new Dictionary<string, string> { { "DefaultStyles", "SetupDefaultStyles" } });
             }
             return null;

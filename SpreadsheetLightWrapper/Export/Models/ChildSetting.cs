@@ -64,7 +64,7 @@ namespace SpreadsheetLightWrapper.Export.Models
             {
                 //WebLogger.LogException(
                 //    new Exception(
-                //        "Ups.Toolkit.SpreadsheetLight.Export.Models.ChildSetting.Contructor:Overload 1 -> " +
+                //        "SpreadsheetLightWrapper.Export.Models.ChildSetting.Contructor:Overload 1 -> " +
                 //        ex.Message, ex),
                     //new Dictionary<string, string> {{"ChildSetting", "Constructor:Overload 1"}});
             }
@@ -98,7 +98,7 @@ namespace SpreadsheetLightWrapper.Export.Models
             {
                 //WebLogger.LogException(
                 //    new Exception(
-                //        "Ups.Toolkit.SpreadsheetLight.Export.Models.ChildSetting.Contructor:Overload 2 -> " +
+                //        "SpreadsheetLightWrapper.Export.Models.ChildSetting.Contructor:Overload 2 -> " +
                 //        ex.Message, ex),
                 //    new Dictionary<string, string> {{"ChildSetting", "Constructor:Overload 2"}});
             }
@@ -138,7 +138,7 @@ namespace SpreadsheetLightWrapper.Export.Models
             {
                 //WebLogger.LogException(
                 //    new Exception(
-                //        "Ups.Toolkit.SpreadsheetLight.Export.Models.ChildSetting.Contructor:Overload 3 -> " +
+                //        "SpreadsheetLightWrapper.Export.Models.ChildSetting.Contructor:Overload 3 -> " +
                 //        ex.Message, ex),
                 //    new Dictionary<string, string> {{"ChildSetting", "Constructor:Overload 3"}});
             }
@@ -186,7 +186,7 @@ namespace SpreadsheetLightWrapper.Export.Models
             {
                 //WebLogger.LogException(
                 //    new Exception(
-                //        "Ups.Toolkit.SpreadsheetLight.Export.Models.ChildSetting.Contructor:Overload 4 -> " +
+                //        "SpreadsheetLightWrapper.Export.Models.ChildSetting.Contructor:Overload 4 -> " +
                 //        ex.Message, ex),
                 //    new Dictionary<string, string> {{"ChildSetting", "Constructor:Overload 4"}});
             }
@@ -286,7 +286,7 @@ namespace SpreadsheetLightWrapper.Export.Models
             {
                 //WebLogger.LogException(
                 //    new Exception(
-                //        "Ups.Toolkit.SpreadsheetLight.Export.Models.ChildSetting.SetUserDefinedColumnNames -> " +
+                //        "SpreadsheetLightWrapper.Export.Models.ChildSetting.SetUserDefinedColumnNames -> " +
                 //        ex.Message, ex),
                 //    new Dictionary<string, string> {{"ChildSetting", "SetUserDefinedColumnNames"}});
             }
@@ -361,11 +361,7 @@ namespace SpreadsheetLightWrapper.Export.Models
             }
             catch (Exception ex)
             {
-                //WebLogger.LogException(
-                //    new Exception(
-                //        "Ups.Toolkit.SL.Export.Models.ChildSetting.SetUserDefinedColumnNames:Overload 2 -> " +
-                //        ex.Message, ex),
-                //    new Dictionary<string, string> {{"ChildSetting", "SetUserDefinedColumnNames:Overload 2"}});
+
             }
         }
 

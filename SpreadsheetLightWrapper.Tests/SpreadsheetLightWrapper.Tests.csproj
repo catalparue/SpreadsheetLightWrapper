@@ -6,8 +6,8 @@
     <ProjectGuid>{4A150D63-BCA4-4E70-A5EC-F3C20EB8A95A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ups.Toolkit.SpreadsheetLight.Tests</RootNamespace>
-    <AssemblyName>Ups.Toolkit.SL.Tests</AssemblyName>
+    <RootNamespace>SpreadsheetLightWrapper.Tests</RootNamespace>
+    <AssemblyName>SpreadsheetLightWrapper.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -70,9 +70,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Ups.Toolkit.SpreadsheetLight\Ups.Toolkit.SpreadsheetLight.csproj">
+    <ProjectReference Include="..\SpreadsheetLightWrapper\SpreadsheetLightWrapper.csproj">
       <Project>{56cbbe26-f604-4f9f-8980-a98fe13b559f}</Project>
-      <Name>Ups.Toolkit.SpreadsheetLight</Name>
+      <Name>SpreadsheetLightWrapper</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

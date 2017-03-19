@@ -52,7 +52,7 @@ namespace SpreadsheetLightWrapper.Core
             {
                 //WebLogger.LogException(
                 //    new Exception(
-                //        "Ups.Toolkit.SpreadsheetLight.Core.SLDocument.AddGroupedRow -> " + ex.Message, ex),
+                //        "SpreadsheetLightWrapper.Core.SLDocument.AddGroupedRow -> " + ex.Message, ex),
                 //    new Dictionary<string, string> {{"SLDocument", "AddGroupedRow"}});
             }
         }
@@ -123,7 +123,7 @@ namespace SpreadsheetLightWrapper.Core
             {
                 //WebLogger.LogException(
                 //    new Exception(
-                //        "Ups.Toolkit.SpreadsheetLight.Core.SLDocument.CollapseAllRows -> " + ex.Message, ex),
+                //        "SpreadsheetLightWrapper.Core.SLDocument.CollapseAllRows -> " + ex.Message, ex),
                 //    new Dictionary<string, string> {{"SLDocument", "CollapseAllRows"}});
             }
         }
@@ -197,7 +197,7 @@ namespace SpreadsheetLightWrapper.Core
 //    {
 //        WebLogger.LogException(
 //            new Exception(
-//                "Ups.Toolkit.SpreadsheetLight.Core.SLDocument.CollapseAllRows -> " + ex.Message, ex),
+//                "SpreadsheetLightWrapper.Core.SLDocument.CollapseAllRows -> " + ex.Message, ex),
 //            new Dictionary<string, string> {{"SLDocument", "CollapseAllRows"}});
 //    }
 //}

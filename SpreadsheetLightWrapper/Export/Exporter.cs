@@ -62,7 +62,7 @@ namespace SpreadsheetLightWrapper.Export
             {
                 //WebLogger.LogException(
                 //    new Exception(
-                //        "Ups.Toolkit.SpreadsheetLight.Exporter.Constructor: Overload 1 -> " + ex.Message, ex),
+                //        "SpreadsheetLightWrapper.Exporter.Constructor: Overload 1 -> " + ex.Message, ex),
                 //    new Dictionary<string, string> {{"Exporter", "Constructor: Overload 1"}});
             }
         }
@@ -82,7 +82,7 @@ namespace SpreadsheetLightWrapper.Export
                 /*  ------------------------------------------------------------
                  *  Initialize the default styles
                  *  If the user doesn't input any then get the Default styles
-                 *  from the Ups.Toolkit.SpreadsheetLight library
+                 *  from the SpreadsheetLightWrapper library
                  *  ----------------------------------------------------------*/
                 _settings = settings ?? DefaultStyles.SetupDefaultStyles();
             }
@@ -90,7 +90,7 @@ namespace SpreadsheetLightWrapper.Export
             {
                 //WebLogger.LogException(
                 //    new Exception(
-                //        "Ups.Toolkit.SpreadsheetLight.Exporter.Constructor: Overload 2 -> " + ex.Message, ex),
+                //        "SpreadsheetLightWrapper.Exporter.Constructor: Overload 2 -> " + ex.Message, ex),
                 //    new Dictionary<string, string> {{"Exporter", "Constructor: Overload 2"}});
             }
         }
@@ -138,7 +138,7 @@ namespace SpreadsheetLightWrapper.Export
             {
                 //WebLogger.LogException(
                 //    new Exception(
-                //        "Ups.Toolkit.SpreadsheetLight.Exporter.OutputWorkbook:Overload 1 -> " + ex.Message, ex),
+                //        "SpreadsheetLightWrapper.Exporter.OutputWorkbook:Overload 1 -> " + ex.Message, ex),
                 //    new Dictionary<string, string> {{"Exporter", "OutputWorkbook:Overload 1"}});
             }
         }
@@ -180,7 +180,7 @@ namespace SpreadsheetLightWrapper.Export
             {
                 //WebLogger.LogException(
                 //    new Exception(
-                //        "Ups.Toolkit.SpreadsheetLight.Exporter.OutputWorkbook:Overload 2 -> " + ex.Message, ex),
+                //        "SpreadsheetLightWrapper.Exporter.OutputWorkbook:Overload 2 -> " + ex.Message, ex),
                 //    new Dictionary<string, string> {{"Exporter", "OutputWorkbook:Overload 2 "}});
             }
         }
@@ -309,7 +309,7 @@ namespace SpreadsheetLightWrapper.Export
             {
                 //WebLogger.LogException(
                 //    new Exception(
-                //        "Ups.Toolkit.SpreadsheetLight.Exporter.GenerateWorkbook -> " + ex.Message, ex),
+                //        "SpreadsheetLightWrapper.Exporter.GenerateWorkbook -> " + ex.Message, ex),
                 //    new Dictionary<string, string> {{"Exporter", "GenerateWorkbook"}});
             }
             return null;
@@ -430,10 +430,7 @@ namespace SpreadsheetLightWrapper.Export
             }
             catch (Exception ex)
             {
-                //WebLogger.LogException(
-                //    new Exception(
-                //        "Ups.Toolkit.SL.Exporter.GetChildren -> " + ex.Message, ex),
-                //    new Dictionary<string, string> {{"Exporter", "GetChildren"}});
+
             }
         }
 
@@ -539,10 +536,6 @@ namespace SpreadsheetLightWrapper.Export
             }
             catch (Exception ex)
             {
-                //WebLogger.LogException(
-                //    new Exception(
-                //        "Ups.Toolkit.SL.Exporter.GetChildren -> " + ex.Message, ex),
-                //    new Dictionary<string, string> {{"Exporter", "GetChildren"}});
             }
         }
 
@@ -746,7 +739,7 @@ namespace SpreadsheetLightWrapper.Export
             {
                 //WebLogger.LogException(
                 //    new Exception(
-                //        "Ups.Toolkit.SpreadsheetLight.Exporter.SetupRowsAndCells -> " + ex.Message, ex),
+                //        "SpreadsheetLightWrapper.Exporter.SetupRowsAndCells -> " + ex.Message, ex),
                 //    new Dictionary<string, string> {{"Exporter", "SetupRowsAndCells"}});
             }
         }
@@ -771,7 +764,7 @@ namespace SpreadsheetLightWrapper.Export
             {
                 //WebLogger.LogException(
                 //    new Exception(
-                //        "Ups.Toolkit.SpreadsheetLight.Exporter.SetNumberFormat -> " + ex.Message, ex),
+                //        "SpreadsheetLightWrapper.Exporter.SetNumberFormat -> " + ex.Message, ex),
                 //    new Dictionary<string, string> {{"Exporter", "SetNumberFormat"}});
             }
         }
@@ -796,7 +789,7 @@ namespace SpreadsheetLightWrapper.Export
             {
                 //WebLogger.LogException(
                 //    new Exception(
-                //        "Ups.Toolkit.SpreadsheetLight.Exporter.GetAttribute -> " + ex.Message, ex),
+                //        "SpreadsheetLightWrapper.Exporter.GetAttribute -> " + ex.Message, ex),
                 //    new Dictionary<string, string> {{"Exporter", "GetAttribute"}});
             }
             return null;
@@ -863,7 +856,7 @@ namespace SpreadsheetLightWrapper.Export
             {
                 //WebLogger.LogException(
                 //    new Exception(
-                //        "Ups.Toolkit.SpreadsheetLight.Exporter.SetDataType -> " + ex.Message, ex),
+                //        "SpreadsheetLightWrapper.Exporter.SetDataType -> " + ex.Message, ex),
                 //    new Dictionary<string, string> {{"Exporter", "SetDataType"}});
             }
         }

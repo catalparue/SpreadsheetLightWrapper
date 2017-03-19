@@ -3,20 +3,19 @@ using System.Collections.Generic;
 using System.Data;
 using DocumentFormat.OpenXml.Spreadsheet;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Ups.Toolkit.SpreadsheetLight.Core.style;
-using Ups.Toolkit.SpreadsheetLight.Export;
-using Ups.Toolkit.SpreadsheetLight.Export.Enums;
-using Ups.Toolkit.SpreadsheetLight.Export.Models;
+using SpreadsheetLightWrapper.Core.style;
+using SpreadsheetLightWrapper.Export;
+using SpreadsheetLightWrapper.Export.Enums;
+using SpreadsheetLightWrapper.Export.Models;
 using Color = System.Drawing.Color;
-using Column = Ups.Toolkit.SpreadsheetLight.Export.Models.Column;
-using Page = System.Web.UI.Page;
+using Column = SpreadsheetLightWrapper.Export.Models.Column;
 
 
-namespace Ups.Toolkit.SpreadsheetLight.Tests
+namespace SpreadsheetLightWrapper.Tests
 {
     /// ===========================================================================================
     /// <summary>
-    ///     Test class for Ups.Toolkit.SpreadsheetLight
+    ///     Test class for SpreadsheetLightWrapper
     /// </summary>
     /// ===========================================================================================
     [TestClass]

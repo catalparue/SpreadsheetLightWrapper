@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{DF60B3
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpreadsheetLightWrapper", "SpreadsheetLightWrapper\SpreadsheetLightWrapper.csproj", "{56CBBE26-F604-4F9F-8980-A98FE13B559F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpreadsheetLightWrapper.Tests", "SpreadsheetLightWrapper.Tests\SpreadsheetLightWrapper.Tests.csproj", "{4A150D63-BCA4-4E70-A5EC-F3C20EB8A95A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +30,10 @@ Global
 		{56CBBE26-F604-4F9F-8980-A98FE13B559F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{56CBBE26-F604-4F9F-8980-A98FE13B559F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{56CBBE26-F604-4F9F-8980-A98FE13B559F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A150D63-BCA4-4E70-A5EC-F3C20EB8A95A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A150D63-BCA4-4E70-A5EC-F3C20EB8A95A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A150D63-BCA4-4E70-A5EC-F3C20EB8A95A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A150D63-BCA4-4E70-A5EC-F3C20EB8A95A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

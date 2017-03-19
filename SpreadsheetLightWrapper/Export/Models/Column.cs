@@ -200,7 +200,7 @@ namespace SpreadsheetLightWrapper.Export.Models
             {
                 //WebLogger.LogException(
                 //    new Exception(
-                //        "Ups.Toolkit.SpreadsheetLight.Export.Models.Column.Contructor:Overload 2 -> " +
+                //        "SpreadsheetLightWrapper.Export.Models.Column.Contructor:Overload 2 -> " +
                 //        ex.Message, ex),
                 //    new Dictionary<string, string> { { "Column", "Constructor:Overload 2" } });
             }
