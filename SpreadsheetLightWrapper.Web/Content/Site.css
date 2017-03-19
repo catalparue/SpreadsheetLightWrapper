@@ -1,0 +1,19 @@
+﻿.buttonSize {
+  width: 375px;
+}
+.Spacer {
+  width: 10px;
+}
+.commentSize {
+  font-size: small;
+  vertical-align: middle;
+}
+.jumbotron-mod {
+  -ms-border-radius: 10px;
+  background-color: #eee;
+  border-radius: 10px;
+  height: 600px;
+  margin: 10px 10px 25px 10px;
+  padding: 25px;
+}
+/*# sourceMappingURL=Site.css.map */

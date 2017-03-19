@@ -20,5 +20,68 @@ namespace SpreadsheetLightWrapper.Web {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm frmMain;
+        
+        /// <summary>
+        /// btnBasicRelatedGroupedDataSet control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnBasicRelatedGroupedDataSet;
+        
+        /// <summary>
+        /// btnStyledRelatedGroupedDataSet control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnStyledRelatedGroupedDataSet;
+        
+        /// <summary>
+        /// btnStyledRelatedGroupedDataSetToFile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnStyledRelatedGroupedDataSetToFile;
+        
+        /// <summary>
+        /// btnBasicUnrelatedUngroupedDataSet control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnBasicUnrelatedUngroupedDataSet;
+        
+        /// <summary>
+        /// butPartiallyRelatedGroupedDataSet control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button butPartiallyRelatedGroupedDataSet;
+        
+        /// <summary>
+        /// btnPartiallyRelatedGroupedDataVer2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnPartiallyRelatedGroupedDataVer2;
+        
+        /// <summary>
+        /// btnPartiallyRelatedGroupedDataVer3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnPartiallyRelatedGroupedDataVer3;
     }
 }
